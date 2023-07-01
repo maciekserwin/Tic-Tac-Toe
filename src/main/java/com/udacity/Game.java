@@ -150,8 +150,37 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
-        //Student code goes here ...
-        return result;
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+            if (grid[i][0] != '-' && grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
+                return grid[i][0] + " wins";
+            }
+        }
+
+        // Check columns
+        for (int j = 0; j < 3; j++) {
+            if (grid[0][j] != '-' && grid[0][j] == grid[1][j] && grid[1][j] == grid[2][j]) {
+                return grid[0][j] + " wins";
+            }
+        }
+
+        // Check diagonals
+        if (grid[0][0] != '-' && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
+            return grid[0][0] + " wins";
+        }
+
+        if (grid[2][0] != '-' && grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2]) {
+            return grid[2][0] + " wins";
+        }
+
+        // Check if the game ended as a tie
+        if (freeSpots == 0) {
+            return "tie";
+        }
+
+        // No winner yet, return "None"
+        return "None";
+
     }
 
     /**
